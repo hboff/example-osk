@@ -1,9 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DortmundController;
 use App\Http\Controllers\HomeController;
-
+use App\Http\Controllers\DortmundController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,11 +13,8 @@ use App\Http\Controllers\HomeController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
-
 Route::domain('immobilienbewertung-duisburg.com')->group(function () {
-    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/', HomeController::class, 'index')->name('home');
     Route::get('datenschutzerklaerung', 'HomeController@privacyPolicy')->name('privacy-policy');
     Route::get('wohnimmobilien', 'HomeController@residentialProperties')->name('residential-properties');
     Route::get('verkehrswertverfahren', 'HomeController@marketValueProcedure')->name('market-value-procedure');
