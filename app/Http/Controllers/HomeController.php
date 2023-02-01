@@ -7,6 +7,21 @@ use Illuminate\Http\Request;
 
  class HomeController extends Controller
 {
+        private function getLocalort($domain)
+    {
+        switch ($domain) {
+            case 'immobilienbewertung-duisburg.com':
+                return DB::table('orteat')
+                    ->whereBetween('breitengrad', [47.5, 48.1])
+                    ->whereBetween('laengengrad', [16.5, 48.1])
+                    ->get();
+            case 'immobilienbewertung-bochum.com':
+                return DB::table('orteat')
+                    ->whereBetween('breitengrad', [41.5, 48.1])
+                    ->whereBetween('laengengrad', [12.5, 48.1])
+                    ->get();
+        }
+    }
     public function index($domain)
     {
         $localort = $this->getLocalort($domain);
@@ -42,20 +57,6 @@ use Illuminate\Http\Request;
         return view('sonderimmobilien', ['localort' => $localort]);
     }
     
-    private function getLocalort($domain)
-    {
-        switch ($domain) {
-            case 'immobilienbewertung-duisburg.com':
-                return DB::table('orteat')
-                    ->whereBetween('breitengrad', [47.5, 48.1])
-                    ->whereBetween('laengengrad', [16.5, 48.1])
-                    ->get();
-            case 'immobilienbewertung-bochum.com':
-                return DB::table('orteat')
-                    ->whereBetween('breitengrad', [41.5, 48.1])
-                    ->whereBetween('laengengrad', [12.5, 48.1])
-                    ->get();
-        }
-    }
+
 }
 
