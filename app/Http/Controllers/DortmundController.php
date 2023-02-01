@@ -12,17 +12,12 @@ class DortmundController extends Controller
 
     public function index()
     {
-        return view('welcome');
+        $localort = DB::table('orteat')
+                ->whereBetween('breitengrad', [47.5, 48.1])
+                ->whereBetween('laengengrad', [16.5, 48.1])
+                ->get(); 
+                
+        return view('welcome', ['localort' => $localort]);
     }
-
-   // public function index()
-   // {
-   //     $localort = DB::table('orteat')
-   //             ->whereBetween('breitengrad', [47.5, 48.1])
-   //             ->whereBetween('laengengrad', [16.5, 48.1])
-   //             ->get(); 
-   //             
-   //     return view('welcome', ['localort' => $localort]);
-   // }
 
 }
