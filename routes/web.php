@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DortmundController;
+use App\Http\Controllers\OskarController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,6 +17,9 @@ use App\Http\Controllers\DortmundController;
 
 
 
-Route::get('/', [DortmundController::class, 'index'], function () {
-    return view('welcome');
+Route::group(['domain' => '{domain}'], function() {
+    Route::get('/', 'OskarController@index');
+    Route::view('/datenschutzerklaerung', 'datenschutzerklaerung');
+    Route::view('/welcome', 'welcome');
+    Route::view('/index', 'index');
 });
