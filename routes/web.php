@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DortmundController;
-use App\Http\Controllers\OskarController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +17,18 @@ use App\Http\Controllers\OskarController;
 
 
 
-Route::group(['domain' => '{domain}'], function() {
-    Route::get('/', 'OskarController@index');
-    Route::view('/datenschutzerklaerung', 'datenschutzerklaerung');
-    Route::view('/welcome', 'welcome');
-    Route::view('/index', 'index');
+Route::domain('immobilienbewertung-duisburg.com')->group(function () {
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('datenschutzerklaerung', 'HomeController@privacyPolicy')->name('privacy-policy');
+    Route::get('wohnimmobilien', 'HomeController@residentialProperties')->name('residential-properties');
+    Route::get('verkehrswertverfahren', 'HomeController@marketValueProcedure')->name('market-value-procedure');
+    Route::get('sonderimmobilien', 'HomeController@specialProperties')->name('special-properties');
+});
+
+Route::domain('immobilienbewertung-bochum.com')->group(function () {
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('datenschutzerklaerung', 'HomeController@privacyPolicy')->name('privacy-policy');
+    Route::get('wohnimmobilien', 'HomeController@residentialProperties')->name('residential-properties');
+    Route::get('verkehrswertverfahren', 'HomeController@marketValueProcedure')->name('market-value-procedure');
+    Route::get('sonderimmobilien', 'HomeController@specialProperties')->name('special-properties');
 });
