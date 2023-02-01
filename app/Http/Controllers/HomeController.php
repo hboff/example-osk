@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB; 
-use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
  class HomeController extends Controller
 {
         private function getLocalort($domain)
