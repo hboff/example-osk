@@ -13,15 +13,15 @@ use App\Http\Controllers\DortmundController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::domain('immobilienbewertung-duisburg.com')->group(function () {
-    Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::group(['domain' => 'immobilienbewertung-duisburg.com'], function () {
+    Route::get('/', 'HomeController@index')->name('home');
     Route::get('datenschutzerklaerung', 'HomeController@privacyPolicy')->name('privacy-policy');
     Route::get('wohnimmobilien', 'HomeController@residentialProperties')->name('residential-properties');
     Route::get('verkehrswertverfahren', 'HomeController@marketValueProcedure')->name('market-value-procedure');
     Route::get('sonderimmobilien', 'HomeController@specialProperties')->name('special-properties');
 });
 
-Route::domain('immobilienbewertung-bochum.com')->group(function () {
+Route::group(['domain' => 'immobilienbewertung-bochum.com'], function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('datenschutzerklaerung', 'HomeController@privacyPolicy')->name('privacy-policy');
     Route::get('wohnimmobilien', 'HomeController@residentialProperties')->name('residential-properties');
