@@ -14,14 +14,14 @@ use App\Http\Controllers\DortmundController;
 |
 */
 Route::group(['domain' => 'immobilienbewertung-duisburg.com'], function () {
-    Route::get('/', 'HomeController@index')->name('home');
-    Route::get('datenschutzerklaerung', 'HomeController@privacyPolicy')->name('privacy-policy');
-    Route::get('wohnimmobilien', 'HomeController@residentialProperties')->name('residential-properties');
-    Route::get('verkehrswertverfahren', 'HomeController@marketValueProcedure')->name('market-value-procedure');
-    Route::get('sonderimmobilien', 'HomeController@specialProperties')->name('special-properties');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('datenschutzerklaerung', [HomeController::class, 'privacyPolicy'])->name('privacy-policy');
+Route::get('wohnimmobilien', [HomeController::class, 'residentialProperties'])->name('residential-properties');
+Route::get('verkehrswertverfahren', [HomeController::class, 'marketValueProcedure'])->name('market-value-procedure');
+Route::get('sonderimmobilien', [HomeController::class, 'specialProperties'])->name('special-properties');
 });
 
-Route::group(['domain' => 'immobilienbewertung-bochum.com'], function () {
+Route::domain('immobilienbewertung-bochum.com')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('datenschutzerklaerung', 'HomeController@privacyPolicy')->name('privacy-policy');
     Route::get('wohnimmobilien', 'HomeController@residentialProperties')->name('residential-properties');
