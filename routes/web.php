@@ -14,7 +14,7 @@ use App\Http\Controllers\DortmundController;
 |
 */
 Route::group(['domain' => 'immobilienbewertung-duisburg.com'], function () {
-    Route::get('/', [HomeController::class, 'index']);
+    Route::get('/', [DortmundController::class, 'index']);
 Route::get('datenschutzerklaerung', [HomeController::class, 'privacyPolicy'])->name('privacy-policy');
 Route::get('wohnimmobilien', [HomeController::class, 'residentialProperties'])->name('residential-properties');
 Route::get('verkehrswertverfahren', [HomeController::class, 'marketValueProcedure'])->name('market-value-procedure');
